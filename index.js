@@ -6,8 +6,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 dotenv.config();
-app.listen(5000,()=>{
-    console.log("Server lestenin port 5000");
+app.listen(5001,()=>{
+    console.log("Server lestenin port 5001");
 })
 mongoose.connect(process.env.DB_CONNECT,()=>{
     console.log("Connected to db :)");
@@ -16,8 +16,10 @@ mongoose.connect(process.env.DB_CONNECT,()=>{
 
 
 const authRoute = require('./routes/auth');
+const fatherRoute = require('./routes/authFather');
 const postRoute = require('./routes/posts');
 app.use('/api/user',authRoute);
+app.use('/api/father',fatherRoute);
 app.use('/api/posts',postRoute);
 
 // app.use(cors);

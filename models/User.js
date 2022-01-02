@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const fatherSchema = require('../models/FatherSchema');
+const {type} = require("@hapi/joi/lib/extend");
 const userSchema = new mongoose.Schema({
     name : {
         type: String,
@@ -18,6 +20,7 @@ const userSchema = new mongoose.Schema({
         max:1024,
         min: 6
     },
+    fathers:[fatherSchema],
     date: {
         type: Date,
         default : Date.now()
