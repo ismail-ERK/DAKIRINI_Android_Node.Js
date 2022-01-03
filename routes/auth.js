@@ -6,8 +6,6 @@ const jwt = require('jsonwebtoken');
 const {registerValidation, loginValidation} = require('../validation');
 const cors = require('cors')
 
-var jsonParser = bodyParser.json()
-
 
 
 router.post('/register',cors(),async (req,res)=>{
