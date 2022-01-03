@@ -4,13 +4,13 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const {registerValidation, loginValidation} = require('../validation');
-
+const cors = require('cors')
 
 var jsonParser = bodyParser.json()
 
 
 
-router.post('/register',async (req,res)=>{
+router.post('/register',cors(),async (req,res)=>{
     var {error} = registerValidation(req.body);
     if(error) return res.status(400).send(error.details[0].message);
 
@@ -36,7 +36,7 @@ try{
 })
 
 
-router.post('/login',async (req,res)=>{
+router.post('/login',cors(),async (req,res)=>{
     var {error} = loginValidation(req.body);
     if(error) return res.status(400).send(error.details[0].message);
 
