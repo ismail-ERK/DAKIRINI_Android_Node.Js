@@ -10,7 +10,7 @@ const cors = require("cors");
 
 
 
-router.post('/register',verify,cors(),async (req,res)=>{
+router.post('/register',cors(),verify,async (req,res)=>{
     var {error} = registerValidation(req.body);
     if(error) return res.status(400).send(error.details[0].message);
 
@@ -37,7 +37,7 @@ router.post('/register',verify,cors(),async (req,res)=>{
 })
 
 
-router.post('/login',verify,cors(),async (req,res)=>{
+router.post('/login',cors(),async (req,res)=>{
     var {error} = loginValidation(req.body);
     if(error) return res.status(400).send(error.details[0].message);
     // const father = await Father.findOne({key: req.body.key})
