@@ -19,7 +19,7 @@ const authRoute = require('./routes/auth');
 const fatherRoute = require('./routes/authFather');
 const postRoute = require('./routes/posts');
 const sampleRoute = require('./routes/sampleRoute');
-app.use('/api/user',authRoute);
+app.use('/api/users',authRoute);
 app.use('/api/father',fatherRoute);
 app.use('/api/posts',postRoute);
 app.use('/',sampleRoute);

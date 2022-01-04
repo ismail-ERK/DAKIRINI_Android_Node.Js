@@ -3,7 +3,7 @@ const fatherSchema = new mongoose.Schema({
     name : {
         type: String,
         required: true,
-        min: 6,
+
         max: 255
     },
     key: {
@@ -16,7 +16,7 @@ const fatherSchema = new mongoose.Schema({
         type: Number,
         required:true,
         max:124,
-        min: 6
+
     },
     relation: {
         type: String,
