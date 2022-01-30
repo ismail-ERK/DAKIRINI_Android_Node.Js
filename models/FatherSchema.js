@@ -21,6 +21,10 @@ const fatherSchema = new mongoose.Schema({
     relation: {
         type: String,
         required: true
+    },
+    photo: {
+        type: String,
+        max:100000000000000000000000000000000000000000000000
     }
 })
 

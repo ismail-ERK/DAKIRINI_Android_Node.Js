@@ -16,6 +16,9 @@ const fatherSchema = new mongoose.Schema({
     },
     relation: {
         type: String,
+    },
+    photo:{
+        type: String
     }
 })
 

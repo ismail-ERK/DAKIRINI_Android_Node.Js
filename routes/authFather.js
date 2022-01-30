@@ -11,8 +11,8 @@ const cors = require("cors");
 
 
 router.post('/register',cors(),verify,async (req,res)=>{
-    var {error} = registerValidation(req.body);
-    if(error) return res.status(400).send(error.details[0].message);
+    // var {error} = registerValidation(req.body);
+    // if(error) return res.status(400).send(error.details[0].message);
 
     //
     //
@@ -24,13 +24,15 @@ router.post('/register',cors(),verify,async (req,res)=>{
         name: req.body.name,
         key: req.body.key,
         age: req.body.age,
-        relation: req.body.relation
+        relation: req.body.relation,
+        photo: req.body.photo
     })
     var user = await User.findOne({_id: req.user._id})
+    console.log(user)
         user.fathers.push(father)
 
     const user1 = user.save()
-    res.status(200).send(user1)
+    res.status(200).send(father)
 
 
 
@@ -46,7 +48,12 @@ router.post('/login',cors(),async (req,res)=>{
     // if(!user) return res.status(400).send('Key not found');
 if(!user) return res.status(404).send({error: "not found"})
 
-res.status(200).send(user)
+// res.status(200).send(user)
+
+
+    const father = user.fathers.find(father=>father.key===req.body.key);
+    res.status(200).send(father)
+
     //Create token
     //jwt.sign({information}, password pour securilte random)
 

@@ -50,7 +50,7 @@ router.post('/login',cors(),async (req,res)=>{
     //Create token
     //jwt.sign({information}, password pour securilte random)
     const token = jwt.sign({_id:user._id},process.env.TOKEN_SECRET);
-    res.header('auth-token', token).send(token);
+    res.header('auth-token', token).send(user);
 
 
     // res.send("Logged in !");

@@ -9,6 +9,7 @@ const registerValidation = (body)=>{
         key: Joi.string().min(6).required(),
         age: Joi.required(),
         relation: Joi.string().required(),
+        photo: Joi.string().max(10000000000000000000000).required(),
     })
 
 
