@@ -3,7 +3,7 @@ const User = require('../models/User');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const {registerValidation, loginValidation} = require('../validation');
+const {registerValidation, loginValidation} = require('../verifications/validation');
 const cors = require('cors')
 
 router.get('/',cors(),(req,res)=>{

@@ -19,7 +19,7 @@ mongoose.connect(process.env.DB_CONNECT,()=>{
 const authRoute = require('./routes/auth');
 const fatherRoute = require('./routes/authFather');
 const crudFatherRoute = require('./routes/CrudFather');
-const postRoute = require('./routes/posts');
+const postRoute = require('./middlewares/posts');
 const sampleRoute = require('./routes/sampleRoute');
 app.use('/api/users',authRoute);
 app.use('/api/father',fatherRoute);
