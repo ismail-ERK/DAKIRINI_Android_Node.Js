@@ -32,8 +32,6 @@ console.log('register')
 
 
 const loginSon= async (req,res) => {
-    var {error} = loginValidation(req.body);
-    if(error) return res.status(400).send(error.details[0].message);
 
     const {email,password} = req.body;
 
@@ -93,8 +91,12 @@ const loginFather = async (req,res) => {
 // res.status(200).send(user)
 
 
-    const father = user.fathers.find(father=>father.key===req.body.key);
-    res.status(200).send(father)
+    let father = undefined;
+    father = user.fathers.find(father=>father.key===req.body.key);
+    if(father) return res.status(200).send(father)
+     return res.status(404).send({error: "not found"})
+
+
 
     //Create token
     //jwt.sign({information}, password pour securilte random)

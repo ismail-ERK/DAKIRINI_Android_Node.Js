@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
+const messageRouters=require('./routes/MessagesRoute')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
@@ -28,6 +28,8 @@ app.use('/api/father',fatherRoute);
 app.use('/api/fathers',crudFatherRoute);
 app.use('/api/posts',postRoute);
 app.use('/',sampleRoute);
+app.use(express.json())
+app.use('/api/message',messageRouters)
 
 const contactRoute = require("./routes/ContactRoute.js");
 const sonRoute = require("./routes/SonRoute.js");
