@@ -9,7 +9,7 @@ const Father = require("../models/Father");
 
 
 const registerSon = async (req,res)=>{
-
+console.log('register')
 
     const salt =await bcrypt.genSalt(10);
     const hashedPassword =await bcrypt.hash(req.body.password,salt);
@@ -64,15 +64,15 @@ const registerFaher = async (req,res)=>{
     // const salt =await bcrypt.genSalt(10);
     // const hashedPassword =await bcrypt.hash(req.body.password,salt);
 
-
+    console.log(req.req.body)
     const father = new Father({
-        name: req.body.name,
-        key: req.body.key,
-        age: req.body.age,
-        relation: req.body.relation,
-        photo: req.body.photo
+        name: req.req.body.name,
+        key: req.req.body.key,
+        age: req.req.body.age,
+        relation: req.req.body.relation,
+        photo: req.req.body.photo
     })
-    var user = await User.findOne({_id: req.user._id})
+    var user = await User.findOne({_id: req.req.user._id})
     console.log(user)
     user.fathers.push(father)
 

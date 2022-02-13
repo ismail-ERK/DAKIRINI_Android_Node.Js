@@ -6,9 +6,11 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+
 dotenv.config();
-app.listen(5001,()=>{
-    console.log("Server lestenin port 5001");
+app.listen(5000,()=>{
+    console.log("Server lestenin port 5000");
 })
 mongoose.connect(process.env.DB_CONNECT,()=>{
     console.log("Connected to db :)");
@@ -27,4 +29,11 @@ app.use('/api/fathers',crudFatherRoute);
 app.use('/api/posts',postRoute);
 app.use('/',sampleRoute);
 
+const contactRoute = require("./routes/ContactRoute.js");
+const sonRoute = require("./routes/SonRoute.js");
+
+app.use("/contacts", contactRoute);
+app.use("/sons", sonRoute);
+
 // app.use(cors);
+
