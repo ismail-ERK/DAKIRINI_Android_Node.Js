@@ -17,7 +17,7 @@ mongoose.connect(process.env.DB_CONNECT,()=>{
 
 });
 
-
+const reminderRouters=require('./routes/Reminders')
 const authRoute = require('./routes/auth');
 const fatherRoute = require('./routes/authFather');
 const crudFatherRoute = require('./routes/CrudFather');
@@ -30,6 +30,7 @@ app.use('/api/posts',postRoute);
 app.use('/',sampleRoute);
 app.use(express.json())
 app.use('/api/message',messageRouters)
+app.use('/api/reminder',reminderRouters)
 
 const contactRoute = require("./routes/ContactRoute.js");
 const sonRoute = require("./routes/SonRoute.js");
