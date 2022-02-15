@@ -16,6 +16,7 @@ const addContact = async (req, res) => {
         contact_name: newContact.contact_name,
         contact_number: newContact.contact_number,
         contact_image: newContact.contact_image,
+        fatherKey: newContact.fatherKey,
       });
       if (contact.save()) {
         response = {
@@ -63,10 +64,11 @@ const deleteContact = async (req, res) => {
     errMsgs: {},
     data: {},
   };
+  let fatherKey = req.params.fatherKey;
   console.log("contact delete");
   const deletedContact = req.body;
   const contactId = deletedContact.contact_id;
-  const contact = await contactModel.findOne({'contact_id': contactId});
+  const contact = await contactModel.findOne({'contact_id': contactId, 'fatherKey': fatherKey});
   contactModel.findByIdAndDelete(contact._id, (err, doc) => {
     if (err) {
       console.log(err);
@@ -94,6 +96,7 @@ const updateContact = async (req, res) => {
     errMsgs: {},
     data: {},
   };
+  let fatherKey = req.params.fatherKey;
   console.log("contact update");
   // const contactId = req.body.contactId;
   const updatedContact = req.body;
@@ -104,7 +107,7 @@ const updateContact = async (req, res) => {
       // const contact = await contactModel.findById(
       //   mongoose.Types.ObjectId(contactId)
       // );
-      const contact = await contactModel.findOne({'contact_id': contactId});
+      const contact = await contactModel.findOne({'contact_id': contactId, 'fatherKey': fatherKey});
       console.log("contact name = " + contact.contact_name);
       console.log("updated contact name = " + updatedContact.contact_name);
       // contact = updatedContact;
@@ -157,10 +160,15 @@ const allContacts = async (req, res) => {
     errMsgs: {},
     data: {},
   };
+  console.log("All Contact")
+  let fatherKey = req.params.fatherKey;
+  console.log(fatherKey);
   // parentId = req.body.parentId;
   // const contacts = await contactModel.findById(mongoose.Types.ObjectId(parentId));
-  const contacts = await contactModel.find();
+  const contacts = await contactModel.find({'fatherKey': fatherKey});
   response = contacts;
+  console.log("response");
+  console.log(response);
   return response;
 };
 
